@@ -25,3 +25,13 @@ I used to merge branches. The rest of the material was new for me.
 ![git-collab-01](https://raw.githubusercontent.com/Harnytskyi/kottans-frontend/main/task_git_collaboration/1.png)
 ![git-collab-02](https://raw.githubusercontent.com/Harnytskyi/kottans-frontend/main/task_git_collaboration/2.png)
 </details>
+
+## Intro to HTML and CSS
+Most of the material I already knew, but some things were new to me.
+<details>
+<summary>Screenshot</summary>
+
+![html-css-1](https://raw.githubusercontent.com/Harnytskyi/kottans-frontend/main/task_html_css_intro/1.png)
+</details>
+
+
