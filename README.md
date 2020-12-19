@@ -34,4 +34,10 @@ Most of the material I already knew, but some things were new to me.
 ![html-css-1](https://raw.githubusercontent.com/Harnytskyi/kottans-frontend/main/task_html_css_intro/1.png)
 </details>
 
+## Responsive Web Design
+This task was easy for me, because most of the material I studied in the codeacademy course "Learn CSS"
+<details>
+<summary>Screenshot</summary>
 
+![responsive-1](https://raw.githubusercontent.com/Harnytskyi/kottans-frontend/main/task_responsive_web_design/1.png)
+</details>
