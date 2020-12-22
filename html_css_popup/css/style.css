@@ -1,0 +1,97 @@
+.menu{
+    display: flex;
+    justify-content: flex-end;
+    padding: 14px;
+}
+
+.menu-item{
+    align-self: center;
+    padding-left: 15px;
+}
+
+.menu-button-img{
+    max-width: 24px;
+    max-height: 24px;
+    vertical-align: middle;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+.popup-check, .more-check{
+    display: none;
+}
+
+.popup-check:checked~.popup{ 
+    display: block;
+}
+
+.popup{
+    display: none;
+    border: 1px solid #828282;
+    border-radius: 3px;
+    width: 307px;
+    max-height: 410px;
+    top: 60px;
+    right: 20px;
+    position: absolute;
+    overflow-x: hidden;  
+}
+
+.popup-ul{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;   
+}
+
+.more-check:checked~.more{ 
+    display: flex;
+}
+
+.more {
+    display: none;
+}
+
+.more-div{
+    width: 285px;
+}
+
+.popup-button{
+    display: flex;
+    width: 86px;
+    height: 86px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid transparent;
+    border-radius: 3px;
+}
+
+.popup-button:hover{
+    background-color: aliceblue;
+}
+
+.popup-button:focus{
+    border: 2px solid lightblue;
+}
+
+.popup-button-img{
+    max-width: 70%;
+    max-height: 55px;
+}
+
+.span-more{
+    width: 100%;
+    border: none;
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 7px;
+}
+
+*{
+    font-family: Sans-Serif;
+    font-size: 14px;
+    text-decoration: none; 
+}
