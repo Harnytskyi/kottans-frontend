@@ -41,3 +41,7 @@ This task was easy for me, because most of the material I studied in the codeaca
 
 ![responsive-1](https://raw.githubusercontent.com/Harnytskyi/kottans-frontend/main/task_responsive_web_design/1.png)
 </details>
+
+## HTML & CSS practice
+[Demo](https://harnytskyi.github.io/kottans-frontend/html_css_popup/) |
+[Code base](https://github.com/Harnytskyi/kottans-frontend/tree/main/html_css_popup)
