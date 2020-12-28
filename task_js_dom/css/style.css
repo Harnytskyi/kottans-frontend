@@ -5,7 +5,7 @@
 
 .nav-open-button {
     display: none;
-    background: url(../svg/angle-down.svg) no-repeat;
+    background: no-repeat;
     cursor: pointer;
     border: none;
     width: 50px;
@@ -115,6 +115,12 @@ body {
     }
     .header-image {
         height: 100%;
+    }
+    .header-title {
+        font-size: 6vw;
+    }
+    .nav-button{
+        height: fit-content;
     }
     .aside {
         display: none;
