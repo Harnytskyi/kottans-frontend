@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="600px" width="394px">
+
+<!--outter shield-->
+<path
+ style="fill:#09e; stroke:#ffdc00; stroke-width:14px; stroke-linejoin:mitter;"
+
+d="m 8,50 C 185,-5 209,-5 386,50 L 386,400 C 381,507 280,545 197,590 114,545 13,507 8,400 Z"
+/>
+
+
+<!--inner shield-->
+<path style="fill:none; stroke:#ffdc00; stroke-width:14px; stroke-linejoin:mitter;"
+
+d="m 197,134 C 183,122 169,127 153,135 135,145 111,145 82,139 79,169 68,196 49,220 85,247 96,281 53,325 L 60,335 
+	C 64,409 83,439 121,450 126,467 146,481 183,490 L 197,501 
+	L 211,490 C 248,481 268,467 273,450 311,439 330,409, 334,335
+	L 341,325 C 298,281 309,247 345,220 326,196 315,169 312,139 283,145 259,145 241,135 225,127 211,122 197,134 z"
+/>
+
+
+<!--castle-->
+<!--castle wall-->
+<rect x="107px" y="240px" width="180px" height="165px" style="fill:white ;stroke:black; stroke-width:1px;"/>
+
+<!--bricks - horizontal lines-->
+<line x1="107px" y1="255px" x2="287px" y2="255px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="270px" x2="287px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="285px" x2="287px" y2="285px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="300px" x2="287px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="315px" x2="287px" y2="315px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="330px" x2="287px" y2="330px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="345px" x2="287px" y2="345px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="360px" x2="287px" y2="360px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="375px" x2="287px" y2="375px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="107px" y1="390px" x2="287px" y2="390px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<!--bricks - vertical lines-->
+<!--whole bricks-->
+<line x1="137px" y1="240px" x2="137px" y2="255px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="167px" y1="240px" x2="167px" y2="255px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="197px" y1="240px" x2="197px" y2="255px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="227px" y1="240px" x2="227px" y2="255px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="257px" y1="240px" x2="257px" y2="255px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="137px" y1="270px" x2="137px" y2="285px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="167px" y1="270px" x2="167px" y2="285px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="197px" y1="270px" x2="197px" y2="285px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="227px" y1="270px" x2="227px" y2="285px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="257px" y1="270px" x2="257px" y2="285px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="137px" y1="300px" x2="137px" y2="315px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="167px" y1="300px" x2="167px" y2="315px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="227px" y1="300px" x2="227px" y2="315px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="257px" y1="300px" x2="257px" y2="315px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="137px" y1="330px" x2="137px" y2="345px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="257px" y1="330px" x2="257px" y2="345px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="137px" y1="360px" x2="137px" y2="375px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="257px" y1="360px" x2="257px" y2="375px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="137px" y1="390px" x2="137px" y2="405px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="257px" y1="390px" x2="257px" y2="405px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<!--parted bricks-->
+<line x1="122px" y1="255px" x2="122px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="152px" y1="255px" x2="152px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="182px" y1="255px" x2="182px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="212px" y1="255px" x2="212px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="242px" y1="255px" x2="242px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="272px" y1="255px" x2="272px" y2="270px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="122px" y1="285px" x2="122px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="152px" y1="285px" x2="152px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="182px" y1="285px" x2="182px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="212px" y1="285px" x2="212px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="242px" y1="285px" x2="242px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="272px" y1="285px" x2="272px" y2="300px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="122px" y1="315px" x2="122px" y2="330px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="152px" y1="315px" x2="152px" y2="330px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="242px" y1="315px" x2="242px" y2="330px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="272px" y1="315px" x2="272px" y2="330px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="122px" y1="345px" x2="122px" y2="360px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="152px" y1="345px" x2="152px" y2="360px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="242px" y1="345px" x2="242px" y2="360px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="272px" y1="345px" x2="272px" y2="360px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<line x1="122px" y1="375px" x2="122px" y2="390px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="152px" y1="375px" x2="152px" y2="390px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="242px" y1="375px" x2="242px" y2="390px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="272px" y1="375px" x2="272px" y2="390px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<!--stairs-->
+<rect x="104px" y="405px" width="186px" height="9px" style="fill:white ;stroke:black; stroke-width:1px;"/>
+<rect x="96px" y="414px" width="202px" height="9px" style="fill:white ;stroke:black; stroke-width:1px;"/>
+
+<!--door-->
+<!--door hole-->
+<path style="fill:white; stroke:black; stroke-width:1px;" d="m 167,342 C 187,298 207,298 227,342 V405 H167 V342 Z"
+/>
+<path style="fill:#09e;" d="m 172,342 C 187,303 207,303 222,342 V405 H172 V342 Z"
+/>
+
+<!--doors-->
+<path
+ style="fill:#ffdc00; stroke:black; stroke-width:1px;" d="m 173,336 C 171,327 165,321 157,317 V405 H173 V336 z"/>
+<path
+ style="fill:#ffdc00; stroke:black; stroke-width:1px;" d="m 221,336 C 223,327 229,321 237,317 V405 H221 V336 z"/>
+
+<!--door top-->
+<polygon points="192,316 189,300 197,295 205,300 202,316" style="fill:white; stroke:black; stroke-width:1"/>
+
+<!--roof-->
+<polygon points="107,240 101,234 293,234 287,240" style="fill:white; stroke:black; stroke-width:1"/>
+
+<!--towers-->
+<!--central tower-->
+<path
+ style="fill:white; stroke:black; stroke-width:1px;" 
+	d="m 217,234 H177 V194 L170,187 V169 H181 V176 H191 V169 H203 V176 H213 V169 H224 V187 L217,194 V234 z"/>
+<line x1="177px" y1="197px" x2="217px" y2="197px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="177px" y1="194px" x2="217px" y2="194px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="170px" y1="187px" x2="224px" y2="187px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<rect x="183px" y="202px" width="8px" height="13px" style="fill:black;"/>
+<rect x="203px" y="202px" width="8px" height="13px" style="fill:black;"/>
+<rect x="193px" y="221px" width="8px" height="13px" style="fill:black;"/>
+
+<!--left tower-->
+<path
+ style="fill:white; stroke:black; stroke-width:1px;" 
+	d="m 150,234 H110 V199 L103,192 V176 H115 V185 H124 V176 H136 V185 H145 V176 H157 V192 L150,199 V234 z"/>
+<line x1="110px" y1="202px" x2="150px" y2="202px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="110px" y1="199px" x2="150px" y2="199px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="103px" y1="192px" x2="157px" y2="192px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<rect x="116px" y="207px" width="8px" height="11px" style="fill:black;"/>
+<rect x="136px" y="207px" width="8px" height="11px" style="fill:black;"/>
+<rect x="126px" y="223px" width="8px" height="11px" style="fill:black;"/>
+
+<!--right tower-->
+<path
+ style="fill:white; stroke:black; stroke-width:1px;" 
+	d="m 284,234 H244 V199 L237,192 V176 H249 V185 H258 V176 H270 V185 H279 V176 H291 V192 L284,199 V234 z"/>
+<line x1="244px" y1="202px" x2="284px" y2="202px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="244px" y1="199px" x2="284px" y2="199px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+<line x1="237px" y1="192px" x2="291px" y2="192px" stroke="black" stroke-width="1" stroke-linecap="butt"/>
+
+<rect x="250px" y="207px" width="8px" height="11px" style="fill:black;"/>
+<rect x="270px" y="207px" width="8px" height="11px" style="fill:black;"/>
+<rect x="260px" y="223px" width="8px" height="11px" style="fill:black;"/>
+
+<!--letters-->
+<!--Zh-->
+<path style="fill:#ffdc00;"
+ 
+d="m 99,102 H89 L91,100 V75 C 86,76 83,80 83,86 V100 L85,102 H75 L77,100 
+	C 79,90 76,79 89,71 86,61 83,60 81,62 A3,3,0,1,1,81,55 C 84,55 88,62 91,66 V57 L89,55
+	H99 L97,57 V66 C 100,62 104,55 107,55 A3,3,0,1,1,107,62 C 105,60 102,61 99,71 112,79 109,90 111,100
+	L113,102 H103 L105,100 V86 C 105,80 102,76 97,75 V100 L99,102 z"/>
+
+
+<!--Y-->
+<g id="y">
+<path style="fill:#ffdc00;"
+ 
+d="m 128,102 H118 L120,100 V57 L118,55 H128 L126,57 V73 L137,62 
+	V57 L135,55 H145 L143,57 V100 L145,102 H135 L137,100 V70 L126,81 V100 L128,102 z"/>
+
+</g>
+<use xlink:href="#y" transform="translate(136,0)"/>
+
+<!--T-->
+<path style="fill:#ffdc00;"
+ d="m 171,102 H161 L163,100 V56 H169 V100 L171,102 z"/>
+
+<path style="fill:#ffdc00;"
+ d="m 151,55 L155,63 A11.3,7.5,0,0,1,177,63 L181,55 H151 z"/>
+
+
+<!--O-->
+<path
+ style="fill:#ffdc00;" 
+d="M 194,53 C 179,66 179,77 185,88 187,92 190,97 190,104 
+	C 205,91 205,80 199,69 197,65 194,60 194,53 
+	M 194,94 C 193,91 193,90 190,83 185,72 189,67 191,62 
+	191,66 191,67 194,74 199,85 195,90 193,97 z"
+/>
+
+<!--M-->
+<path style="fill:#ffdc00;"
+ 
+d="m 231,102 H221 L223,100 V86 C 223,81 218,77 214,76 V100 L216,102 H206 L208,100 V57 L206,55 H216 L214,57 V70 C 219,72 223,75 226,80 
+	229,75 233,72 238,69 V57 L236,55 H246 L244,57 V100 L246,102 H236 L238,100 V76 C 234,77 229,81 229,86 V100 L231,102 z"/>
+
+<path style="fill:#ffdc00;"
+ d="m 226,72 L223,63 A2,3,0,0,1,229,63 L226,72 z"/>
+
+
+<!--R-->
+<path style="fill:#ffdc00;"
+ 
+d="M 296,100 L298,102 H288 L290,100 V60 C 290,58 292,55 296,54 298,53 300,52 302,50 
+	c 1.435,1.6 3.347,2.94 5.53,4.125 2.134,1.295 3.894,2.864 5.5,5.875
+	C 315,64 315,68 313,72 311.5,75 308,76 305,73 303.5,71 299,71 296,73
+	M 296,69 H305 C 308.5,69 308,64 305,61 303,59 302,57 301,55 298.5,56 296,57.5 296,60 V69 z"/>
+
+
+</svg>
