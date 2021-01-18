@@ -20,7 +20,7 @@ function displayCard() {
     CHOSEN_CARDS.forEach(item => {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.id = item;
+        card.dataset.label = item;
         const flipper = document.createElement('div');
         flipper.classList.add('card-flipper');
         const cardFront = document.createElement('div')
@@ -57,7 +57,7 @@ function checkCouple({ target }) {
         TARGET_CARD.classList.add('flipped');
         if (!firstCard)
             firstCard = TARGET_CARD;
-        else if (firstCard.id == TARGET_CARD.id) {
+        else if (firstCard.dataset.label == TARGET_CARD.dataset.label) {
             hideCard(firstCard, TARGET_CARD);
             firstCard = null;
             matchCards++;
@@ -75,7 +75,7 @@ function checkFinishGame() {
             alert('Finish!');
             matchCards = 0;
             displayCard();
-        }, DELAY + 1);
+        }, DELAY + 10);
     }
 }
 

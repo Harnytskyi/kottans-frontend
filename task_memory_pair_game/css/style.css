@@ -1,10 +1,35 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: auto;
+}
+
+.allCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 75vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
 .card {
     opacity: 1;
     perspective: 1000px;
-    margin: 5px;
+    position: relative;
     cursor: pointer;
-    width: 118px;
-    height: 156px;
+    margin: 3%;
+}
+
+.card::after {
+    content: "";
+    padding-top: 133%;
+    display: block;
 }
 
 .card.flipped .card-flipper {
@@ -18,10 +43,16 @@
 }
 
 .card-flipper {
-    position: relative;
-    text-align: center;
     transition: 0.6s;
     transform-style: preserve-3d;
+    border: 2px solid #838383;
+    border-radius: 4%;
+}
+
+.card-front, .card-back {
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .card-front {
@@ -34,29 +65,21 @@
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
-    display: flex;
-    width: 114px;
-    height: 152px;
-    justify-content: center;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+.card-flipper, .card-front, .card-back {
     position: absolute;
-    border: 2px solid #838383;
-    border-radius: 5px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .cardImg {
     max-width: 100%;
-    max-height: 100%
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
-
-.allCards {
-    display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    grid-template-rows: 1fr 1fr;
-    max-width: 512px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
