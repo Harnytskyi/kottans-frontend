@@ -1,0 +1,14 @@
+.search{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+main{
+    display: flex;
+}
+.allFriends{
+    display: flex;
+}
+.card{
+    width: 120px;
+}
