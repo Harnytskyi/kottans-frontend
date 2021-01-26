@@ -9,16 +9,16 @@
 </head>
 <body>
     <header>
-        <input class="search" type="search">
+        <input id="search" class="search" onkeyup="search()" onsearch="search()" type="search">
     </header>
     <main>
         <div>
             <p>Sort</p>
-            <input type="button" value="A-Z">
-            <input type="button" value="Z-A">
+            <input type="button" id="a-z" value="A-Z">
+            <input type="button" id="z-a" value="Z-A">
             <br>
-            <input type="button" value="0-9">
-            <input type="button" value="9-0">
+            <input type="button" id="0-9" value="0-9">
+            <input type="button" id="9-0" value="9-0">
             <p>Gender</p>
             <label><input type="checkbox" id="gender-male"  checked>Man</label>
             <br>

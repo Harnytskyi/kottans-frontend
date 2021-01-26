@@ -12,3 +12,6 @@ main{
 .card{
     width: 120px;
 }
+.hidden{
+    display: none;
+}
