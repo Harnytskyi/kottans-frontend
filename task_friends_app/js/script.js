@@ -6,31 +6,16 @@ const SORT_ZA = document.getElementById("z-a");
 const SEARCH_INPUT = document.getElementById('search');
 const SORT_09 = document.getElementById("0-9");
 const SORT_90 = document.getElementById("9-0");
-const FRIENDS = [
-    {
-        name: "Tom",
-        age: 18,
-        phone: 88003555555,
-        email: "tom@dom.com",
-        gender: "male",
-    },
-    {
-        name: "Katia",
-        age: 21,
-        phone: +380634579216,
-        email: "katia@lovekiss.com",
-        gender: "female",
-    }
-]
+let friends = [];
 
-let selectedFriends = [...FRIENDS];
+let selectedFriends = [...friends];
 function filter() {
     if (gender.male == true && gender.female == true)
-        selectedFriends = FRIENDS;
+        selectedFriends = friends;
     else if (gender.male == true && gender.female == false)
-        selectedFriends = FRIENDS.filter(item => item.gender == "male")
+        selectedFriends = friends.filter(item => item.gender == "male")
     else if (gender.male == false && gender.female == true)
-        selectedFriends = FRIENDS.filter(item => item.gender == "female")
+        selectedFriends = friends.filter(item => item.gender == "female")
 }
 function displayFriends() {
     const ALL_FRIENDS = document.createDocumentFragment();
@@ -40,9 +25,13 @@ function displayFriends() {
         const card = document.createElement('div');
         card.id = item.name;
         card.classList.add('card');
+        const photo = document.createElement('img');
+        photo.classList.add('photo');
+        photo.src = item.photo;
+        card.append(photo);
         const name = document.createElement('p');
         name.classList.add("name");
-        name.innerHTML = "Name: " + item.name;
+        name.innerHTML = item.name;
         card.append(name);
         const age = document.createElement('p');
         age.classList.add("age");
@@ -50,15 +39,19 @@ function displayFriends() {
         card.append(age);
         const phone = document.createElement('a');
         phone.classList.add("phone");
-        phone.href = "tel:+" + item.phone;
-        phone.append("+" + item.phone);
+        phone.href = "tel:" + item.phone;
+        phone.append(item.phone);
         card.append(phone);
+        const emaildiv = document.createElement('div');
+        emaildiv.classList.add('email');
         const email = document.createElement('button');
         const emaillink = document.createElement('a');
+        email.classList.add('button-message');
         email.append("SEND MESSAGE");
         emaillink.append(email);
         emaillink.href = "mailto:" + item.email;
-        card.append(emaillink);
+        emaildiv.append(emaillink);
+        card.append(emaildiv);
         ALL_FRIENDS.append(card);
     });
     GRID.append(ALL_FRIENDS);
@@ -103,7 +96,7 @@ function search() {
 }
 
 function sortFriends(criterion, order) {
-    FRIENDS.sort((a, b) => {
+    friends.sort((a, b) => {
         if (order == "descending") {
             let c = a;
             a = b;
@@ -137,4 +130,47 @@ SORT_90.addEventListener('click', function () {
     sortFriends("age", "descending");
 })
 
+function fetchUsers(){
+    let targetUrl  = "https://randomuser.me/api/?results=30&nat=au,ca,ch,de,dk,es,fr,gb,ie,no,nl,nz,us"
+
+    fetch(targetUrl, {metod: "get"})
+    .then((response) => {
+      let json = response.json();
+      if (response.status >= 200 && response.status < 300) {
+        return json;
+      }
+      else {
+        return error;
+      }
+    }).then((json) => {
+      console.log(json.results)
+      saveUsers(json.results);
+    })
+    .catch(function(error) {
+      showErrorMessage(error);
+    });
+}
+
+function saveUsers(usersArray){
+    usersArray.forEach(user => {
+        let friend ={
+            name: user.name.first +" "+ user.name.last,
+            age: user.dob.age,
+            phone: user.cell,
+            email: user.email,
+            gender: user.gender,
+            photo: user.picture.large
+        }
+        friends.push(friend);
+    })
+    selectedFriends = [...friends];
+    displayFriends();
+}
+function showErrorMessage(error){
+    const field = document.getElementById("contentField");
+    field.classList.add('error-text');
+    field.innerHTML = `something wrong: <br>${error} <br> please reload the page`;
+}
+
+fetchUsers();
 displayFriends();
