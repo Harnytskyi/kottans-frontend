@@ -12,8 +12,11 @@ body {
     color: #00096d;
     margin-bottom: 40px;
 }
+.radio-sort{
+    display: none;
+}
 
-.button-sort {
+.radio-sort-label {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -34,7 +37,7 @@ body {
     margin: 0px 6px 6px 0px;
 }
 
-.button-sort:hover {
+.radio-sort-label:hover {
     background: #EEEEEE;
     border: solid #FFFFFF 0;
     -webkit-border-radius: 4px;
