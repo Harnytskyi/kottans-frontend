@@ -22,9 +22,9 @@ function filterByGender() {
     else if (gender.male == false && gender.female == true)
         selectedFriends = friends.filter(item => item.gender == "female")
 }
-function displayFriends() {
+function displayFriends(displayedFriends) {
     GRID.innerHTML = '';
-    selectedFriends.forEach(item => {
+    displayedFriends.forEach(item => {
         GRID.innerHTML += `<div id="${item.name}" class="card">
             <img class="photo" src="${item.photo}">
             <p class="name">${item.name}</p>
@@ -37,7 +37,7 @@ function displayFriends() {
             </div>
         <div>`
     });
-    search();
+    //search();
 }
 
 function changeFilterStatus(checkbox) {
@@ -59,17 +59,20 @@ function changeFilterStatus(checkbox) {
         gender[checkbox.value] = false;
     }
     filterByGender();
-    displayFriends();
+    displayFriends(selectedFriends);
 }
 
 function search() {
     let searchRequest = SEARCH_INPUT.value.toUpperCase();
+    searchedFriends = [];
     selectedFriends.forEach(item => {
-        const FRIEND = document.getElementById(item.name)
-        FRIEND.classList.remove('hidden');
-        if (item.name.toUpperCase().indexOf(searchRequest) == -1) {
-            FRIEND.classList.add('hidden');
+        // const FRIEND = document.getElementById(item.name)
+        // FRIEND.classList.remove('hidden');
+        if(item.name.toUpperCase().includes(searchRequest)){
+            searchedFriends.push(item)
+            //FRIEND.classList.add('hidden');
         }
+    displayFriends(searchedFriends);
     })
 }
 
@@ -103,7 +106,7 @@ function sortFriends(value) {
         if (a[criterion] < b[criterion]) return -1;
     })
     filterByGender();
-    displayFriends();
+    displayFriends(selectedFriends);
 }
 
 CHECKBOX_MAN.addEventListener('change', function () {
@@ -132,7 +135,7 @@ function fetchUsers() {
     fetch(targetUrl, { metod: "get" })
         .then((response) => {
             let json = response.json();
-            if (response.status >= 200 && response.status < 300) {
+            if (response.ok) {
                 return json;
             }
             else {
@@ -149,7 +152,7 @@ function fetchUsers() {
 function saveUsers(usersArray) {
     usersArray.forEach(user => {
         let friend = {
-            name: user.name.first + " " + user.name.last,
+            name: `${user.name.first} ${user.name.last}`,
             age: user.dob.age,
             phone: user.cell,
             email: user.email,
@@ -159,7 +162,7 @@ function saveUsers(usersArray) {
         friends.push(friend);
     })
     selectedFriends = [...friends];
-    displayFriends();
+    displayFriends(selectedFriends);
 }
 function showErrorMessage(error) {
     const field = document.getElementById("contentField");
