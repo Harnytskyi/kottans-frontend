@@ -6,12 +6,13 @@ const SORT_ALPHABET_DESCEND = document.getElementById("z-a");
 const SEARCH_INPUT = document.getElementById('search');
 const SORT_AGE_ASCEND = document.getElementById("0-9");
 const SORT_AGE_DESCEND = document.getElementById("9-0");
+const FILTER_SORT = document.getElementById("filter-sort");
+const FILTER_GENDER = document.getElementById("filter-gender");
 let friends = [];
 let gender = {
     male: true,
     female: true
 }
-
 
 let selectedFriends = [...friends];
 function filterByGender() {
@@ -21,11 +22,11 @@ function filterByGender() {
         selectedFriends = friends.filter(item => item.gender == "male")
     else if (gender.male == false && gender.female == true)
         selectedFriends = friends.filter(item => item.gender == "female")
+    search();
 }
-function displayFriends(displayedFriends) {
-    GRID.innerHTML = '';
-    displayedFriends.forEach(item => {
-        GRID.innerHTML += `<div id="${item.name}" class="card">
+function displayFriends() {
+    GRID.innerHTML = selectedFriends.map(item => {
+        return `<div id="${item.name}" class="card">
             <img class="photo" src="${item.photo}">
             <p class="name">${item.name}</p>
             <p class="age">Age: ${item.age}</p>
@@ -35,9 +36,8 @@ function displayFriends(displayedFriends) {
                     <button class="button-message">SEND MESSAGE</button>
                 </a>
             </div>
-        <div>`
-    });
-    //search();
+        </div>`
+    }).join("");
 }
 
 function changeFilterStatus(checkbox) {
@@ -59,20 +59,21 @@ function changeFilterStatus(checkbox) {
         gender[checkbox.value] = false;
     }
     filterByGender();
-    displayFriends(selectedFriends);
+    displayFriends();
+}
+function searchEvent() {
+    filterByGender();
+    displayFriends();
 }
 
 function search() {
     let searchRequest = SEARCH_INPUT.value.toUpperCase();
     searchedFriends = [];
     selectedFriends.forEach(item => {
-        // const FRIEND = document.getElementById(item.name)
-        // FRIEND.classList.remove('hidden');
-        if(item.name.toUpperCase().includes(searchRequest)){
+        if (item.name.toUpperCase().includes(searchRequest)) {
             searchedFriends.push(item)
-            //FRIEND.classList.add('hidden');
         }
-    displayFriends(searchedFriends);
+        selectedFriends = searchedFriends;
     })
 }
 
@@ -106,27 +107,16 @@ function sortFriends(value) {
         if (a[criterion] < b[criterion]) return -1;
     })
     filterByGender();
-    displayFriends(selectedFriends);
+    displayFriends();
 }
 
-CHECKBOX_MAN.addEventListener('change', function () {
-    changeFilterStatus(CHECKBOX_MAN);
-});
-CHECKBOX_WOMAN.addEventListener('change', function () {
-    changeFilterStatus(CHECKBOX_WOMAN);
-});
-SORT_ALPHABET_ASCEND.addEventListener('change', function () {
-    sortFriends(this.value);
+FILTER_GENDER.addEventListener('change', (event) => {
+    let target = event.target;
+    changeFilterStatus(target);
 })
-SORT_ALPHABET_DESCEND.addEventListener('change', function () {
-    sortFriends(this.value);
-})
-SORT_AGE_ASCEND.addEventListener('change', function () {
-    sortFriends(this.value);
-})
-
-SORT_AGE_DESCEND.addEventListener('change', function () {
-    sortFriends(this.value);
+FILTER_SORT.addEventListener('change', (event) => {
+    let target = event.target;
+    sortFriends(target.value);
 })
 
 function fetchUsers() {
@@ -162,7 +152,7 @@ function saveUsers(usersArray) {
         friends.push(friend);
     })
     selectedFriends = [...friends];
-    displayFriends(selectedFriends);
+    displayFriends();
 }
 function showErrorMessage(error) {
     const field = document.getElementById("contentField");
