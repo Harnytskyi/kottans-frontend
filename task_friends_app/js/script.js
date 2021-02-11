@@ -47,13 +47,15 @@ function changeFilterStatus(checkbox) {
         if (checkbox.value == "male") {
             if (gender.female == false) {
                 gender.female = true;
-                CHECKBOX_WOMAN.click();
+                CHECKBOX_WOMAN.checked = !CHECKBOX_WOMAN.checked;
+                changeFilterStatus(CHECKBOX_WOMAN);
             }
         }
         else if (checkbox.value == "female") {
             if (gender.male == false) {
                 gender.male = true;
-                CHECKBOX_MAN.click();
+                CHECKBOX_MAN.checked = !CHECKBOX_MAN.checked;
+                changeFilterStatus(CHECKBOX_MAN);
             }
         }
         gender[checkbox.value] = false;
@@ -110,15 +112,6 @@ function sortFriends(value) {
     displayFriends();
 }
 
-FILTER_GENDER.addEventListener('change', (event) => {
-    let target = event.target;
-    changeFilterStatus(target);
-})
-FILTER_SORT.addEventListener('change', (event) => {
-    let target = event.target;
-    sortFriends(target.value);
-})
-
 function fetchUsers() {
     let targetUrl = "https://randomuser.me/api/?results=30&nat=au,ca,ch,de,dk,es,fr,gb,ie,no,nl,nz,us"
 
@@ -159,5 +152,14 @@ function showErrorMessage(error) {
     field.classList.add('error-text');
     field.innerHTML = `something wrong: <br>${error} <br> please reload the page`;
 }
+
+FILTER_GENDER.addEventListener('change', (event) => {
+    let target = event.target;
+    changeFilterStatus(target);
+})
+FILTER_SORT.addEventListener('change', (event) => {
+    let target = event.target;
+    sortFriends(target.value);
+})
 
 fetchUsers();
