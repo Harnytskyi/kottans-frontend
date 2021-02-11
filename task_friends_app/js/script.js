@@ -14,7 +14,20 @@ let gender = {
     female: true
 }
 
-let selectedFriends = [...friends];
+let selectedFriends;
+function saveUsers(usersArray) {
+    friends = usersArray.map(user => {
+        return {
+            name: `${user.name.first} ${user.name.last}`,
+            age: user.dob.age,
+            phone: user.cell,
+            email: user.email,
+            gender: user.gender,
+            photo: user.picture.large
+        }
+    })
+    console.log(friends);
+}
 function filterByGender() {
     if (gender.male == true && gender.female == true)
         selectedFriends = friends;
@@ -22,46 +35,33 @@ function filterByGender() {
         selectedFriends = friends.filter(item => item.gender == "male")
     else if (gender.male == false && gender.female == true)
         selectedFriends = friends.filter(item => item.gender == "female")
+    else
+        selectedFriends = [];
     search();
 }
 function displayFriends() {
-    GRID.innerHTML = selectedFriends.map(item => {
-        return `<div id="${item.name}" class="card">
-            <img class="photo" src="${item.photo}">
-            <p class="name">${item.name}</p>
-            <p class="age">Age: ${item.age}</p>
-            <a class="phone" href="tel:${item.phone}">${item.phone}</a>
-            <div class="email">
-                <a href="mailto:${item.email}">
-                    <button class="button-message">SEND MESSAGE</button>
-                </a>
-            </div>
-        </div>`
-    }).join("");
+    // if (selectedFriends.length == 0){
+    //     showInfoMessage("No one was found");
+    // }
+    // else{
+        GRID.innerHTML = selectedFriends.map(item => {
+            return `<div id="${item.name}" class="card">
+                <img class="photo" src="${item.photo}">
+                <p class="name">${item.name}</p>
+                <p class="age">Age: ${item.age}</p>
+                <a class="phone" href="tel:${item.phone}">${item.phone}</a>
+                <div class="email">
+                    <a href="mailto:${item.email}">
+                        <button class="button-message">SEND MESSAGE</button>
+                    </a>
+                </div>
+            </div>`
+        }).join("");
+    //}
 }
 
 function changeFilterStatus(checkbox) {
-    if (checkbox.checked) {
-        gender[checkbox.value] = true;
-    } else {
-        if (checkbox.value == "male") {
-            if (gender.female == false) {
-                gender.female = true;
-                CHECKBOX_WOMAN.checked = !CHECKBOX_WOMAN.checked;
-                changeFilterStatus(CHECKBOX_WOMAN);
-            }
-        }
-        else if (checkbox.value == "female") {
-            if (gender.male == false) {
-                gender.male = true;
-                CHECKBOX_MAN.checked = !CHECKBOX_MAN.checked;
-                changeFilterStatus(CHECKBOX_MAN);
-            }
-        }
-        gender[checkbox.value] = false;
-    }
-    filterByGender();
-    displayFriends();
+    gender[checkbox.value] = !gender[checkbox.value];
 }
 function searchEvent() {
     filterByGender();
@@ -71,12 +71,10 @@ function searchEvent() {
 function search() {
     let searchRequest = SEARCH_INPUT.value.toUpperCase();
     searchedFriends = [];
-    selectedFriends.forEach(item => {
-        if (item.name.toUpperCase().includes(searchRequest)) {
-            searchedFriends.push(item)
-        }
-        selectedFriends = searchedFriends;
-    })
+    searchedFriends = selectedFriends.filter(item => 
+        (item.name.toUpperCase().includes(searchRequest))   
+    )
+    selectedFriends = searchedFriends;
 }
 
 function sortFriends(value) {
@@ -112,40 +110,26 @@ function sortFriends(value) {
     displayFriends();
 }
 
-function fetchUsers() {
+function initApp() {
     let targetUrl = "https://randomuser.me/api/?results=30&nat=au,ca,ch,de,dk,es,fr,gb,ie,no,nl,nz,us"
 
-    fetch(targetUrl, { metod: "get" })
-        .then((response) => {
-            let json = response.json();
-            if (response.ok) {
-                return json;
-            }
-            else {
-                return error;
-            }
-        }).then((json) => {
+    fetch(targetUrl)
+        .then((response) => response.json())
+        .then((json) => {
             saveUsers(json.results);
+            filterByGender();
+            displayFriends();
         })
         .catch(function (error) {
             showErrorMessage(error);
         });
 }
 
-function saveUsers(usersArray) {
-    usersArray.forEach(user => {
-        let friend = {
-            name: `${user.name.first} ${user.name.last}`,
-            age: user.dob.age,
-            phone: user.cell,
-            email: user.email,
-            gender: user.gender,
-            photo: user.picture.large
-        }
-        friends.push(friend);
-    })
-    selectedFriends = [...friends];
-    displayFriends();
+
+function showInfoMessage(info){
+    const field = document.getElementById("contentField");
+    field.classList.add('error-text');
+    field.innerHTML = `${info}`;
 }
 function showErrorMessage(error) {
     const field = document.getElementById("contentField");
@@ -154,12 +138,14 @@ function showErrorMessage(error) {
 }
 
 FILTER_GENDER.addEventListener('change', (event) => {
-    let target = event.target;
+    const target = event.target;
     changeFilterStatus(target);
+    filterByGender();
+    displayFriends();
 })
 FILTER_SORT.addEventListener('change', (event) => {
     let target = event.target;
     sortFriends(target.value);
 })
 
-fetchUsers();
+initApp();
