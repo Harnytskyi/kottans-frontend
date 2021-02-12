@@ -2,6 +2,7 @@ const GRID_OF_CARDS = document.getElementById("allFriends");
 const SEARCH_INPUT = document.getElementById('search');
 const FILTER_SORT = document.getElementById("filter-sort");
 const FILTER_GENDER = document.getElementById("filter-gender");
+const ERROR_MESSAGE = document.getElementById("errorMessage");
 let friends = [];
 let gender = {
     male: true,
@@ -32,12 +33,8 @@ function filterByGender() {
         selectedFriends = [];
 }
 function displayFriends() {
-    // if (selectedFriends.length == 0){
-    //     showInfoMessage("No one was found");
-    // }
-    // else{
-        GRID_OF_CARDS.innerHTML = selectedFriends.map(item => {
-            return `<div id="${item.name}" class="card">
+    GRID_OF_CARDS.innerHTML = selectedFriends.map(item => {
+        return `<div id="${item.name}" class="card">
                 <img class="photo" src="${item.photo}">
                 <p class="name">${item.name}</p>
                 <p class="age">Age: ${item.age}</p>
@@ -48,8 +45,7 @@ function displayFriends() {
                     </a>
                 </div>
             </div>`
-        }).join("");
-    //}
+    }).join("");
 }
 
 function changeFilterStatus(checkbox) {
@@ -57,15 +53,21 @@ function changeFilterStatus(checkbox) {
 }
 function selectFriends() {
     filterByGender();
-    console.log(selectedFriends);
     findFriends();
-    displayFriends();
+    if (selectedFriends.length == 0) {
+        GRID_OF_CARDS.innerHTML = "";
+        showNotFoundMessage();
+    }
+    else {
+        ERROR_MESSAGE.innerHTML = '';
+        displayFriends();
+    }
 }
 
 function findFriends() {
     let searchRequest = SEARCH_INPUT.value.toUpperCase();
-    searchedFriends = selectedFriends.filter(item => 
-        (item.name.toUpperCase().includes(searchRequest))   
+    searchedFriends = selectedFriends.filter(item =>
+        (item.name.toUpperCase().includes(searchRequest))
     )
     selectedFriends = searchedFriends;
 }
@@ -75,10 +77,10 @@ function sortFriends(value) {
     let order;
     switch (value) {
         case 'alphabet-ascend':
-            friends.sort((a,b) => a.name.localeCompare(b.name));
+            friends.sort((a, b) => a.name.localeCompare(b.name));
             break;
         case 'alphabet-descend':
-            friends.sort((a,b) => b.name.localeCompare(a.name));
+            friends.sort((a, b) => b.name.localeCompare(a.name));
             break;
         case 'age-ascend':
             friends.sort((a, b) => a.age - b.age);
@@ -86,7 +88,7 @@ function sortFriends(value) {
         case 'age-descend':
             friends.sort((a, b) => b.age - a.age);
             break;
-      }
+    }
 }
 
 function initApp() {
@@ -105,15 +107,11 @@ function initApp() {
 }
 
 
-function showInfoMessage(info){
-    const field = document.getElementById("contentField");
-    field.classList.add('error-text');
-    field.innerHTML = `${info}`;
+function showNotFoundMessage() {
+    ERROR_MESSAGE.innerHTML = `Not Found`;
 }
 function showErrorMessage(error) {
-    const field = document.getElementById("contentField");
-    field.classList.add('error-text');
-    field.innerHTML = `something wrong: <br>${error} <br> please reload the page`;
+    ERROR_MESSAGE.innerHTML = `something wrong: <br>${error} <br> please reload the page`;
 }
 
 FILTER_GENDER.addEventListener('change', (event) => {
