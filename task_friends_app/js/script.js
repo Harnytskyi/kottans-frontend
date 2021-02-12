@@ -1,11 +1,5 @@
-const GRID = document.getElementById("allFriends");
-const CHECKBOX_MAN = document.getElementById("gender-male");
-const CHECKBOX_WOMAN = document.getElementById("gender-female");
-const SORT_ALPHABET_ASCEND = document.getElementById("a-z");
-const SORT_ALPHABET_DESCEND = document.getElementById("z-a");
+const GRID_OF_CARDS = document.getElementById("allFriends");
 const SEARCH_INPUT = document.getElementById('search');
-const SORT_AGE_ASCEND = document.getElementById("0-9");
-const SORT_AGE_DESCEND = document.getElementById("9-0");
 const FILTER_SORT = document.getElementById("filter-sort");
 const FILTER_GENDER = document.getElementById("filter-gender");
 let friends = [];
@@ -26,7 +20,6 @@ function saveUsers(usersArray) {
             photo: user.picture.large
         }
     })
-    console.log(friends);
 }
 function filterByGender() {
     if (gender.male == true && gender.female == true)
@@ -37,14 +30,13 @@ function filterByGender() {
         selectedFriends = friends.filter(item => item.gender == "female")
     else
         selectedFriends = [];
-    search();
 }
 function displayFriends() {
     // if (selectedFriends.length == 0){
     //     showInfoMessage("No one was found");
     // }
     // else{
-        GRID.innerHTML = selectedFriends.map(item => {
+        GRID_OF_CARDS.innerHTML = selectedFriends.map(item => {
             return `<div id="${item.name}" class="card">
                 <img class="photo" src="${item.photo}">
                 <p class="name">${item.name}</p>
@@ -63,14 +55,15 @@ function displayFriends() {
 function changeFilterStatus(checkbox) {
     gender[checkbox.value] = !gender[checkbox.value];
 }
-function searchEvent() {
+function selectFriends() {
     filterByGender();
+    console.log(selectedFriends);
+    findFriends();
     displayFriends();
 }
 
-function search() {
+function findFriends() {
     let searchRequest = SEARCH_INPUT.value.toUpperCase();
-    searchedFriends = [];
     searchedFriends = selectedFriends.filter(item => 
         (item.name.toUpperCase().includes(searchRequest))   
     )
@@ -82,32 +75,18 @@ function sortFriends(value) {
     let order;
     switch (value) {
         case 'alphabet-ascend':
-            criterion = 'name';
+            friends.sort((a,b) => a.name.localeCompare(b.name));
             break;
         case 'alphabet-descend':
-            criterion = 'name';
-            order = 'descending';
+            friends.sort((a,b) => b.name.localeCompare(a.name));
             break;
         case 'age-ascend':
-            criterion = 'age';
+            friends.sort((a, b) => a.age - b.age);
             break;
         case 'age-descend':
-            criterion = 'age';
-            order = 'descending';
+            friends.sort((a, b) => b.age - a.age);
             break;
-    }
-    friends.sort((a, b) => {
-        if (order == "descending") {
-            let c = a;
-            a = b;
-            b = c;
-        }
-        if (a[criterion] > b[criterion]) return 1;
-        if (a[criterion] == b[criterion]) return 0;
-        if (a[criterion] < b[criterion]) return -1;
-    })
-    filterByGender();
-    displayFriends();
+      }
 }
 
 function initApp() {
@@ -140,12 +119,12 @@ function showErrorMessage(error) {
 FILTER_GENDER.addEventListener('change', (event) => {
     const target = event.target;
     changeFilterStatus(target);
-    filterByGender();
-    displayFriends();
+    selectFriends();
 })
 FILTER_SORT.addEventListener('change', (event) => {
-    let target = event.target;
+    const target = event.target;
     sortFriends(target.value);
+    selectFriends();
 })
 
 initApp();
