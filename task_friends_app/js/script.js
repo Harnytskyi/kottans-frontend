@@ -3,7 +3,10 @@ const SEARCH_INPUT = document.getElementById('search');
 const FILTER_SORT = document.getElementById("filter-sort");
 const FILTER_GENDER = document.getElementById("filter-gender");
 const ERROR_MESSAGE = document.getElementById("errorMessage");
+const MIN_AGE = document.getElementById("minAge");
+const MAX_AGE = document.getElementById("maxAge");
 let friends = [];
+let minAge, maxAge;
 let gender = {
     male: true,
     female: true
@@ -32,6 +35,10 @@ function filterByGender() {
     else
         selectedFriends = [];
 }
+function filterByAge(){
+    selectedFriends = selectedFriends.filter(friend => (friend.age>=minAge && friend.age<=maxAge));
+    
+}
 function displayFriends() {
     GRID_OF_CARDS.innerHTML = selectedFriends.map(item => {
         return `<div id="${item.name}" class="card">
@@ -53,6 +60,7 @@ function changeFilterStatus(checkbox) {
 }
 function selectFriends() {
     filterByGender();
+    filterByAge();
     findFriends();
     if (selectedFriends.length == 0) {
         GRID_OF_CARDS.innerHTML = "";
@@ -91,6 +99,22 @@ function sortFriends(value) {
     }
 }
 
+function identifyAgeRange(){
+    let minAgeOfFriends = friends[0].age;
+    let maxAgeOfFriends = minAgeOfFriends;
+    friends.forEach(friend => {
+        if(minAgeOfFriends>friend.age)
+            minAgeOfFriends = friend.age;
+        if(maxAgeOfFriends<friend.age)
+            maxAgeOfFriends = friend.age;
+    })
+    MIN_AGE.value = minAgeOfFriends;
+    MAX_AGE.value = maxAgeOfFriends;
+    minAge = minAgeOfFriends;
+    maxAge = maxAgeOfFriends;
+    console.log(minAge, maxAge);
+}
+
 function initApp() {
     let targetUrl = "https://randomuser.me/api/?results=30&nat=au,ca,ch,de,dk,es,fr,gb,ie,no,nl,nz,us"
 
@@ -98,7 +122,8 @@ function initApp() {
         .then((response) => response.json())
         .then((json) => {
             saveUsers(json.results);
-            filterByGender();
+            identifyAgeRange();
+            selectedFriends = friends;
             displayFriends();
         })
         .catch(function (error) {
@@ -113,6 +138,24 @@ function showNotFoundMessage() {
 function showErrorMessage(error) {
     ERROR_MESSAGE.innerHTML = `something wrong: <br>${error} <br> please reload the page`;
 }
+function checkAgeRangeValidity(){
+    maxAge = parseInt(MAX_AGE.value);
+    minAge = parseInt(MIN_AGE.value);
+    if(maxAge<minAge){
+        MIN_AGE.classList.add('invalid-value');
+        MAX_AGE.classList.add('invalid-value');
+        MIN_AGE.title = "Min age must be less than max age";
+        MAX_AGE.title = "Max age must be less than min age";
+        return false;
+    }
+    else{
+        MIN_AGE.classList.remove('invalid-value');
+        MAX_AGE.classList.remove('invalid-value');
+        MIN_AGE.title = "Min age";
+        MAX_AGE.title = "Max age";
+        return true;
+    }
+}
 
 FILTER_GENDER.addEventListener('change', (event) => {
     const target = event.target;
@@ -123,6 +166,14 @@ FILTER_SORT.addEventListener('change', (event) => {
     const target = event.target;
     sortFriends(target.value);
     selectFriends();
+})
+MIN_AGE.addEventListener('change',  (event) =>{
+    if(checkAgeRangeValidity())
+        selectFriends(); 
+})
+MAX_AGE.addEventListener('change',  (event) =>{
+    if(checkAgeRangeValidity())
+        selectFriends();
 })
 
 initApp();
