@@ -5,6 +5,7 @@ const FILTER_GENDER = document.getElementById("filter-gender");
 const ERROR_MESSAGE = document.getElementById("errorMessage");
 const MIN_AGE = document.getElementById("minAge");
 const MAX_AGE = document.getElementById("maxAge");
+const FILTER_AGE = document.getElementById("filter-age");
 let friends = [];
 let minAge, maxAge;
 let gender = {
@@ -35,9 +36,8 @@ function filterByGender() {
     else
         selectedFriends = [];
 }
-function filterByAge(){
-    selectedFriends = selectedFriends.filter(friend => (friend.age>=minAge && friend.age<=maxAge));
-    
+function filterByAge() {
+    selectedFriends = selectedFriends.filter(friend => (friend.age >= minAge && friend.age <= maxAge));
 }
 function displayFriends() {
     GRID_OF_CARDS.innerHTML = selectedFriends.map(item => {
@@ -99,20 +99,19 @@ function sortFriends(value) {
     }
 }
 
-function identifyAgeRange(){
+function identifyAgeRange() {
     let minAgeOfFriends = friends[0].age;
     let maxAgeOfFriends = minAgeOfFriends;
     friends.forEach(friend => {
-        if(minAgeOfFriends>friend.age)
+        if (minAgeOfFriends > friend.age)
             minAgeOfFriends = friend.age;
-        if(maxAgeOfFriends<friend.age)
+        if (maxAgeOfFriends < friend.age)
             maxAgeOfFriends = friend.age;
     })
     MIN_AGE.value = minAgeOfFriends;
     MAX_AGE.value = maxAgeOfFriends;
     minAge = minAgeOfFriends;
     maxAge = maxAgeOfFriends;
-    console.log(minAge, maxAge);
 }
 
 function initApp() {
@@ -136,23 +135,17 @@ function showNotFoundMessage() {
     ERROR_MESSAGE.innerHTML = `Not Found`;
 }
 function showErrorMessage(error) {
-    ERROR_MESSAGE.innerHTML = `something wrong: <br>${error} <br> please reload the page`;
+    ERROR_MESSAGE.innerHTML = `Something wrong: <br>${error} <br> Please reload the page`;
 }
-function checkAgeRangeValidity(){
+function checkAgeRangeValidity() {
     maxAge = parseInt(MAX_AGE.value);
     minAge = parseInt(MIN_AGE.value);
-    if(maxAge<minAge){
-        MIN_AGE.classList.add('invalid-value');
-        MAX_AGE.classList.add('invalid-value');
-        MIN_AGE.title = "Min age must be less than max age";
-        MAX_AGE.title = "Max age must be less than min age";
+    if (maxAge < minAge) {
+        FILTER_AGE.classList.add('invalid-value');
         return false;
     }
-    else{
-        MIN_AGE.classList.remove('invalid-value');
-        MAX_AGE.classList.remove('invalid-value');
-        MIN_AGE.title = "Min age";
-        MAX_AGE.title = "Max age";
+    else {
+        FILTER_AGE.classList.remove('invalid-value');
         return true;
     }
 }
@@ -167,12 +160,8 @@ FILTER_SORT.addEventListener('change', (event) => {
     sortFriends(target.value);
     selectFriends();
 })
-MIN_AGE.addEventListener('change',  (event) =>{
-    if(checkAgeRangeValidity())
-        selectFriends(); 
-})
-MAX_AGE.addEventListener('change',  (event) =>{
-    if(checkAgeRangeValidity())
+FILTER_AGE.addEventListener('change', (event) => {
+    if (checkAgeRangeValidity())
         selectFriends();
 })
 

@@ -43,7 +43,6 @@ body {
 }
 
 .radio-sort-container input:focus~.radio-sort {
-    /* outline: #00096d solid; */
     box-shadow: 0 0 0px 2px #00096d inset;
 }
 
@@ -65,13 +64,12 @@ body {
 .radio-sort:hover {
     background: #EEEEEE;
 }
-.number-age:focus{
+
+.number-age:focus {
     outline-color: #00096d;
+    outline-width: 2px;
 }
-/* .radio-sort:focus{
-    outline:#00096d, solid;
-    border-radius: 4px;
-} */
+
 .button-message {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -176,8 +174,28 @@ main {
     text-align: center;
     font-size: 20px;
 }
-.invalid-value{
-    background-color: #ffe0e0;
+
+.invalid-value input {
+    outline-color: #ff0e3f !important;
+    outline: auto;
+}
+
+.invalid-value:after {
+    display: flex;
+    animation: opacity 0.5s;
+    padding: 10px 5px;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    min-width: 100px;
+    background-color: whitesmoke;
+    position: absolute;
+    z-index: 1;
+    color: #464646;
+    border-radius: 4px;
+    font-family: Open Sans;
+    font-size: 13px;
+    width: 130px;
+    content: 'Min age must be less than max-age';
 }
 
 @media(max-width:600px) {
@@ -197,7 +215,7 @@ main {
         justify-content: center;
         width: 100%;
     }
-    .filters-header{
+    .filters-header {
         margin-block-start: 0;
     }
     .friends-field {
@@ -206,5 +224,18 @@ main {
     .allFriends {
         justify-content: center;
         padding-right: 0px;
+    }
+    .invalid-value:after {
+        transform: translate(23px, 36px);
+        width: 128px;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
