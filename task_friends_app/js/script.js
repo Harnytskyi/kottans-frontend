@@ -27,14 +27,9 @@ function saveUsers(usersArray) {
     })
 }
 function filterByGender() {
-    if (gender.male == true && gender.female == true)
-        selectedFriends = friends;
-    else if (gender.male == true && gender.female == false)
-        selectedFriends = friends.filter(item => item.gender == "male")
-    else if (gender.male == false && gender.female == true)
-        selectedFriends = friends.filter(item => item.gender == "female")
-    else
-        selectedFriends = [];
+    let checkboxes = Array.from(document.querySelectorAll(".gender-checkbox:checked"));
+    selectedFriends = friends.filter(item => 
+        checkboxes.some((gender) => item.gender === gender.value));
 }
 function filterByAge() {
     selectedFriends = selectedFriends.filter(friend => (friend.age >= minAge && friend.age <= maxAge));
