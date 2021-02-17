@@ -8,12 +8,8 @@ const MAX_AGE = document.getElementById("maxAge");
 const FILTER_AGE = document.getElementById("filter-age");
 let friends = [];
 let minAge, maxAge;
-let gender = {
-    male: true,
-    female: true
-}
-
 let selectedFriends;
+
 function saveUsers(usersArray) {
     friends = usersArray.map(user => {
         return {
@@ -50,9 +46,6 @@ function displayFriends() {
     }).join("");
 }
 
-function changeFilterStatus(checkbox) {
-    gender[checkbox.value] = !gender[checkbox.value];
-}
 function selectFriends() {
     filterByGender();
     filterByAge();
@@ -125,7 +118,6 @@ function initApp() {
         });
 }
 
-
 function showNotFoundMessage() {
     ERROR_MESSAGE.innerHTML = `Not Found`;
 }
@@ -147,7 +139,6 @@ function checkAgeRangeValidity() {
 
 FILTER_GENDER.addEventListener('change', (event) => {
     const target = event.target;
-    changeFilterStatus(target);
     selectFriends();
 })
 FILTER_SORT.addEventListener('change', (event) => {
