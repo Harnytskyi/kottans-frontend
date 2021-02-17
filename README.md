@@ -94,3 +94,11 @@ I was already familiar with the Document Object Model, but some of the material 
 ## OOP exercise
 [Demo](https://harnytskyi.github.io/a-tiny-JS-world) |
 [Code base](https://github.com/Harnytskyi/a-tiny-JS-world/tree/gh-pages)
+
+## Memory Pair Game
+[Demo](https://harnytskyi.github.io/kottans-frontend/task_memory_pair_game/) |
+[Code base](https://github.com/Harnytskyi/kottans-frontend/tree/main/task_memory_pair_game)
+
+## Friends App
+[Demo](https://harnytskyi.github.io/kottans-frontend/task_friends_app/) |
+[Code base](https://github.com/Harnytskyi/kottans-frontend/tree/main/task_friends_app)
