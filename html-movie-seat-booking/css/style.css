@@ -36,6 +36,7 @@ main {
     height: 30px;
     border-radius: 10%;
     margin: 5px;
+    margin-top: 0;
 }
 
 .legend_item {
@@ -115,24 +116,25 @@ main {
     border-radius: 0;
 }
 
-.cost {
+.booking_panel {
     grid-column-end: span 1;
-    grid-row-end: span 5;
+    grid-row-end: span 7;
     padding: 15px;
 }
 
 .legend {
     grid-column-end: span 1;
-    grid-row-end: span 4;
+    grid-row-end: span 2;
     justify-content: center;
-    padding: 15px;
+    padding: 0 15px;
 }
 
-.showtimes_propery, .legend_item {
+.showtimes_property, .legend_item {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-right: 10px;
+    /* max-width: max-content; */
 }
 
 .showtimes_property_header {
@@ -151,7 +153,48 @@ main {
 .r11p3{
     grid-column: 4;
 }
-
+.remove_ticket_button{
+    padding: 0;
+    /* display: contents; */
+    border-width: 0;
+    background: red;
+    height: 9px;
+    margin: 0;
+    vertical-align: middle;
+    position: relative;
+}
+.tickets{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    min-height: 24px;
+}
+.ticket{
+    border-radius: 5px;
+    padding: 0px 7px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-width: 0;
+    font-size: 16px;
+}
+/* .remove_ticket_button:before{
+    left: 50%;
+    width: 10%;
+    margin-left: -15%;
+    height: 75%;
+}
+.remove_ticket_button:after {
+    top: 50%;
+    height: 10%;
+    margin-top: -15%;
+    width: 75%;
+}
+.remove_ticket_button:before, .remove_ticket_button:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: #d00;
+} */
 .button_block {
     display: flex;
     justify-content: center;
@@ -161,7 +204,7 @@ main {
     color: white;
     background-color: #D88A04;
     border: 2px solid transparent;
-    margin-top: 20px;
+    margin-top: 10px;
     height: 30px;
 }
 
@@ -192,11 +235,16 @@ main {
     .legend_block{
         margin-left: 0;
     }
-    .cost {
+    .booking_panel {
         grid-row-end: auto;
-        justify-self: center;
         grid-area: column-3;
-        padding: 35px 20px;
+    }
+    .cost{
+        justify-self: center;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: max-content;
     }
     .hall_container {
         grid-area: column-1;
